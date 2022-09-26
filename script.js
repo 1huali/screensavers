@@ -7,20 +7,24 @@ window.onload = function(){
     let name="wawa";
     let input;
     let submitButton = document.getElementById("submitButton");
-    let rainButton = document.getElementById('rainButton');
+    let playButton = document.getElementById("playButton");
+    let asciiMenuButton = document.getElementById("asciiMenuButton");
 
-        let text = name;
+
+    // let asciiMenuButton = document.getElementById('asciiMenuButton');
+    let asciiArray = [];
+    let asciiIndex = 0;
+    let currentAscii = ` ♥ `
+    asciiArray.push(`✧`);
+    asciiArray.push(`❀`);
+    // asciiArray.push(`♡`);
+    // asciiArray.push(`♫`);
+        
+    let text = name;
         let wordArray = text.split("");
         // let letters = [];
-        let printName = wordArray.join(" ♥ ");
+        let printName = wordArray.join(currentAscii);
 
-//    //no need but keeping for educational purposes
-//    //shows a different way to do something at each index of the array until it jumps to the next one
-    // for (let i=0; i<wordArray.length; i++){
-    //   letters.push(wordArray[i]);
-      // letters.push("*");
-//for every index of the array, this happens until the next index object of the array
-    // }
 
     window.addEventListener('resize', function(event) {
     canvas.width = window.innerWidth;
@@ -40,52 +44,16 @@ window.onload = function(){
             nameObj.string=printName;
         });
 
-        function strop(cleft, ctop, d) {
-            var drop = document.createElement('div');
-            drop.className = 'punct';
-            drop.style.left = cleft + 'px';
-            drop.style.top = ctop + 'px';
-            drop.id = d;
-            document.getElementById('content').appendChild(drop);
-        }
-        
-        function randomFromInterval(from, to) {
-            return Math.floor(Math.random() * (to - from + 1) + from);
-        }
-        var n, interval;
-        
-        function newDrop() {
-            var x = randomFromInterval(20, 480),
-                y = randomFromInterval(10, 50);
-            strop(x, y, n);
-            n--;
-            if (n > 0) {
-                setTimeout(newDrop, 500);
-            }
-        }
-        
-        submitButton.addEventListener('click', function(event) {
-            n = 30;
-            newDrop();
-            interval = setInterval(function() {
-                var drops = document.getElementsByClassName('punct'),
-                    newY;
-                if (drops.length == 0) {
-                    clearInterval(interval);
-                    return;
-                }
-                for (var i = 0; i < drops.length; i++) {
-                    newY = drops[i].offsetTop + 2;
-                    if (newY > drops[i].parentNode.offsetHeight) {
-                        drops[i].parentNode.removeChild(drops[i]);
-                    }
-                    else {
-                        drops[i].style.top = newY + 'px';
-                    }
-                }
-            }, 30);
-        });
-    
+        playButton.addEventListener('click', function(event) {
+           console.log("clicked")
+            });
+
+    asciiMenuButton.addEventListener('click', function(event){
+        document.getElementById("asciiMenuOptions").classList.toggle("show");
+    });
+
+
+
     requestAnimationFrame(animate);
  
 function animate(){
@@ -98,3 +66,5 @@ requestAnimationFrame(animate);
 }
 
     }
+
+    // dropdown menu + asciiArray rolling + demander pour le coté visuel + raining screensaver
