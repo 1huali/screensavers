@@ -1,5 +1,5 @@
 class Name {
-    constructor(x,y,string,context){
+    constructor(x,y,string,context,originalText){
       this.string = string;
       this.x = x;
       this.y=y;
@@ -8,6 +8,7 @@ class Name {
 
       this.speedX  =2-1;
       this.speedY =4-1;
+      this.originalText= originalText;
     }
 
     //method to display the triangle using the HTML 5 canvas API
@@ -15,8 +16,13 @@ class Name {
     {
       this.localCanvasContext.font = "30px Arial";
       this.localCanvasContext.fillStyle = "hotpink";
+      // this.localCanvasContext.strokeStyle = "hotpink";
+      // this.localCanvasContext.strokeWeight = "2 px";
+
       this.localCanvasContext.textAlign = "center";
       this.localCanvasContext.fillText(this.string, this.x, this.y);
+      // this.localCanvasContext.strokeText(this.string, this.x, this.y);
+
     }
 
     update(){
@@ -33,6 +39,7 @@ class Name {
       this.speedY=this.speedY*-1;
       }
     }
+
 
  
   }
