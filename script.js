@@ -9,7 +9,7 @@ window.onload = function(){
     let submitButton = document.getElementById("submitButton");
     let trailButton = document.getElementById("trailButton");
     let playButton = document.getElementById("playButton")
-let asciiMenu = document.getElementById("asciiMenu");
+    let asciiMenu = document.getElementById("asciiMenu");
 
     let asciiArray = [];
     // let asciiIndex = 0;
@@ -21,20 +21,16 @@ let asciiMenu = document.getElementById("asciiMenu");
     asciiArray.push(` ♫ `);
         
     let text = name;
-        let wordArray = text.split("");
-        // let letters = [];
-        let printName = wordArray.join(currentAscii);
-let trailMode = false;
-let dustSound = document.getElementById(`dustSound`);
-let soundOn = false;
-console.log(soundOn);
-
+    let wordArray = text.split("");
+    let printName = wordArray.join(currentAscii);
+    let trailMode = false;
+    let dustSound = document.getElementById(`dustSound`);
+    let soundOn = false;
 
     window.addEventListener('resize', function(event) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     });
-
 
     let nameObj = new Name(canvas.width/2,canvas.height/2, printName,context, text);
 
@@ -51,21 +47,6 @@ console.log(soundOn);
             nameObj.originalText=text;
         });
 
-        playButton.addEventListener('click', function(event){
-            console.log("clicked")
-            if (soundOn === false){
-                soundOn = true;
-                dustSound.play();
-                console.log("sound is on")
-
-            } else{
-                soundOn = false;
-                dustSound.pause();
-                console.log("sound is off")
-            }
-
-        });
-
     asciiMenu.addEventListener('change', function(event){
         let userSelection = document.getElementById("asciiMenu").value;
 
@@ -79,7 +60,20 @@ console.log(soundOn);
         nameObj.string=printName;
     });
 
+    playButton.addEventListener('click', function(event){
+        console.log("clicked")
+        if (soundOn === false){
+            soundOn = true;
+            dustSound.play();
+            console.log("sound is on")
 
+        } else{
+            soundOn = false;
+            dustSound.pause();
+            console.log("sound is off")
+        }
+
+    });
 
     requestAnimationFrame(animate);
  
@@ -94,15 +88,13 @@ console.log(soundOn);
 
 
 function animate(){
-//repaint with a black rect..
-if (trailMode === false){
+
+    if (trailMode === false){
 context.clearRect(0,0,canvas.width,canvas.height);
 } else {
     context.fillStyle = 'rgba(0, 0, 0, .05)';
     context.fillRect(0,0,canvas.width,canvas.height);
 }
-
-
 
 nameObj.display();
 nameObj.update();
@@ -111,5 +103,3 @@ requestAnimationFrame(animate);
 }
 
     }
-
-    // dropdown menu + asciiArray rolling + demander pour le coté visuel + raining screensaver
