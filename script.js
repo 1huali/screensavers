@@ -7,7 +7,8 @@ window.onload = function(){
     let name="hello";
     let input;
     let submitButton = document.getElementById("submitButton");
-    let playButton = document.getElementById("playButton");
+    let trailButton = document.getElementById("trailButton");
+    let playButton = document.getElementById("playButton")
 let asciiMenu = document.getElementById("asciiMenu");
 
     let asciiArray = [];
@@ -46,9 +47,9 @@ let trailMode = false;
             nameObj.originalText=text;
         });
 
-        // playButton.addEventListener('click', function(event) {
-        //    console.log("clicked")
-        //     });
+        playButton.addEventListener('click', function(event){
+            console.log("clicked")
+        });
 
     asciiMenu.addEventListener('change', function(event){
         let userSelection = document.getElementById("asciiMenu").value;
@@ -67,7 +68,7 @@ let trailMode = false;
 
     requestAnimationFrame(animate);
  
-    playButton.addEventListener('click', function(event) {
+    trailButton.addEventListener('click', function(event) {
       
         if (trailMode){
             trailMode = false;
