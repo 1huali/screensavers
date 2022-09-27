@@ -25,6 +25,10 @@ let asciiMenu = document.getElementById("asciiMenu");
         // let letters = [];
         let printName = wordArray.join(currentAscii);
 let trailMode = false;
+let dustSound = document.getElementById(`dustSound`);
+let soundOn = false;
+console.log(soundOn);
+
 
     window.addEventListener('resize', function(event) {
     canvas.width = window.innerWidth;
@@ -49,6 +53,17 @@ let trailMode = false;
 
         playButton.addEventListener('click', function(event){
             console.log("clicked")
+            if (soundOn === false){
+                soundOn = true;
+                dustSound.play();
+                console.log("sound is on")
+
+            } else{
+                soundOn = false;
+                dustSound.pause();
+                console.log("sound is off")
+            }
+
         });
 
     asciiMenu.addEventListener('change', function(event){
@@ -86,6 +101,7 @@ context.clearRect(0,0,canvas.width,canvas.height);
     context.fillStyle = 'rgba(0, 0, 0, .05)';
     context.fillRect(0,0,canvas.width,canvas.height);
 }
+
 
 
 nameObj.display();
