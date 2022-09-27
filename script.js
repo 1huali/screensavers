@@ -60,20 +60,29 @@ window.onload = function(){
         nameObj.string=printName;
     });
 
+
     playButton.addEventListener('click', function(event){
-        console.log("clicked")
         if (soundOn === false){
             soundOn = true;
-            dustSound.play();
             console.log("sound is on")
-
         } else{
             soundOn = false;
             dustSound.pause();
+            nameObj.onEdge = false;
             console.log("sound is off")
         }
-
     });
+
+    function bouncingSound(){
+        if (soundOn){
+            console.log("into")
+            if (nameObj.onEdge){
+                dustSound.play();
+                nameObj.onEdge = false;
+            } 
+        }
+       }
+
 
     requestAnimationFrame(animate);
  
@@ -99,6 +108,7 @@ context.clearRect(0,0,canvas.width,canvas.height);
 nameObj.display();
 nameObj.update();
 nameObj.checkBounds(canvas);
+bouncingSound();
 requestAnimationFrame(animate);
 }
 

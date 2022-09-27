@@ -9,6 +9,8 @@ class Name {
       this.speedX  =2-1;
       this.speedY =4-1;
       this.originalText= originalText;
+
+      this.onEdge = false;
     }
 
     //method to display the triangle using the HTML 5 canvas API
@@ -31,14 +33,22 @@ class Name {
     }
  
     checkBounds(localCanvas){
-      if(this.x>localCanvas.width || this.x<0 ){
+      if(this.x>localCanvas.width || this.x<0){
         this.speedX = this.speedX*-1;
+        this.onEdge = true;
+
+
       }
  
       if(this.y>localCanvas.height || this.y<0 ){
       this.speedY=this.speedY*-1;
+      this.onEdge = true;  
+
       }
+    
     }
+
+
 
 
  
