@@ -4,7 +4,7 @@ window.onload = function(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     let context = canvas.getContext("2d");
-    let name="hello";
+    let name="doruk";
     let input;
     let submitButton = document.getElementById("submitButton");
     let trailButton = document.getElementById("trailButton");
